@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="百度脑图（kityminder-core）标签（空格分隔）： 百度脑图  Kity Minder整体设计KityMinder对应的 js：kityminder.js，实现了类似namespace的功能 暴露的命名空间，所有公开类都会放在该命名空间下。还会暴露一个简写的命名空间：KM （项目中好像没找到，倒是它的例子里面将 Minder 的实例赋值给 KM，作为windows顶层变量来使用）123c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://jerrymei.cn/2018/10/29/百度脑图（kityminder-core）/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="百度脑图（kityminder-core）标签（空格分隔）： 百度脑图  Kity Minder整体设计KityMinder对应的 js：kityminder.js，实现了类似namespace的功能 暴露的命名空间，所有公开类都会放在该命名空间下。还会暴露一个简写的命名空间：KM （项目中好像没找到，倒是它的例子里面将 Minder 的实例赋值给 KM，作为windows顶层变量来使用）123c">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/2epv3thkmzvnphked6aitvsg/image_1cn0mpu6d1f0e1ivqd981vqd5h39.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/8ul2i1t38irn4grvy90oaqz2/image_1cn10bnp71sd06sh1g6713c4ohe16.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/otvnqvda8if6uqbtmgrfm5x5/image_1cn10tnst1st2r1k1uaufkmb8e3g.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/lfkv6mr1vxvwis9m42n7bx4d/image_1cn1cd73r1b011269cgu1ok51qt4h.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/ezx5h8aybyst9vq65eyuzan3/image_1cn1cg550t563oj4lfau61u1n5e.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/mkxokjv4kaien6h3v9nthh5b/image_1cn1ctvqh4ri1h07s6818ib18te6u.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/6hqlbgr4bioce664c3uz1rx0/image_1cn1eqk1ivlg17j51k1v9ojdbl84.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/j19l89bzo5scvfv06hme1otk/image_1cn1f43uqdhphlg1l7o1b3f1slm9k.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/6g2fagfwgelbzv1h41g7xrud/image_1cn36hb8v66fhce1femrs4dnh1c.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/5eg34w8r2ya2l6imexnp4gry/image_1cn36mqci1u2aldp1buc1btaren3o.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/2rcjh4aljxvvvl9hq9k74879/image_1cn39cjdh13771ekc1nao19cg1g6418.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/65ufa8jyq235swom3elvetqt/image_1cn3b5ep61amf12dv1nrt18g8kqp35.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/pcail9ramvydlfv9c079dc9y/image_1cn3bts3tlne1dqf1f29lhp75p3i.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/mkv3a8f3xxl93t8haqi0zip6/image_1cn3ilfp31nbi1fq21fdlv6hgjc3v.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/kibqiqhbcrzvv9ff2ui507qb/image_1cn5ukkrp1egtep4t5behdrbf9.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/msu0ek045nue71l6g3qgwa5o/QQ%E6%88%AA%E5%9B%BE20180903151541.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/gzcivo8azrppi8aj308570t4/image_1cn3p75i21s3b1mph7d01dod11199.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/ebj2oluh20l7bg7ommqmz11h/image_1cn3psgjpa7h10r57l911m4125626.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/s16wdufvk0aux3qznycdzy8s/image_1cn3svicm4lb2ehongr21p9589.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/2zwshpxj568b2jiq4gr8szbn/image_1cn3tauodnqu1iopur81bkf10uje1.png">
+<meta property="og:image" content="http://static.zybuluo.com/Jerry-MEI/a37ylzty9fvckcmldh3s7kl5/image_1cn3tf5jml8i1941kq3hgcu0gih.png">
+<meta property="og:updated_time" content="2018-10-29T05:37:50.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="百度脑图（kityminder-core）标签（空格分隔）： 百度脑图  Kity Minder整体设计KityMinder对应的 js：kityminder.js，实现了类似namespace的功能 暴露的命名空间，所有公开类都会放在该命名空间下。还会暴露一个简写的命名空间：KM （项目中好像没找到，倒是它的例子里面将 Minder 的实例赋值给 KM，作为windows顶层变量来使用）123c">
+<meta name="twitter:image" content="http://static.zybuluo.com/Jerry-MEI/2epv3thkmzvnphked6aitvsg/image_1cn0mpu6d1f0e1ivqd981vqd5h39.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jerrymei.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-百度脑图（kityminder-core）" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/29/百度脑图（kityminder-core）/" class="article-date">
+  <time datetime="2018-10-29T05:37:57.357Z" itemprop="datePublished">2018-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="百度脑图（kityminder-core）"><a href="#百度脑图（kityminder-core）" class="headerlink" title="百度脑图（kityminder-core）"></a>百度脑图（kityminder-core）</h1><p>标签（空格分隔）： 百度脑图</p>
+<hr>
+<h2 id="Kity-Minder整体设计"><a href="#Kity-Minder整体设计" class="headerlink" title="Kity Minder整体设计"></a>Kity Minder整体设计</h2><h3 id="KityMinder"><a href="#KityMinder" class="headerlink" title="KityMinder"></a><code>KityMinder</code></h3><p>对应的 js：<code>kityminder.js</code>，实现了类似<code>namespace</code>的功能</p>
+<p>暴露的命名空间，所有公开类都会放在该命名空间下。还会暴露一个简写的命名空间：KM</p>
+<p>（项目中好像没找到，倒是它的例子里面将 Minder 的实例赋值给 KM，作为windows顶层变量来使用）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const Minder = KityMinder.Minder;</span><br><span class="line">//创建km实例</span><br><span class="line">const KM = window.KM = new Minder();</span><br></pre></td></tr></table></figure></p>
+<h3 id="Command"><a href="#Command" class="headerlink" title="Command"></a><code>Command</code></h3><p>表示一条在 <code>KityMinder</code> 上执行的命令，以<code>class</code>的方式定义，<strong>命令必须依附于模块，不允许单独存在</strong></p>
+<p>我们先来看一下<code>Command</code>是怎么用的。比如我想在脑图上添加一个工作量，值为10，可以执行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KM.execCommand(&apos;efforts&apos;, 10);</span><br></pre></td></tr></table></figure></p>
+<p>当然，这个命令我们现在还没有去实现它。那么，如何去实现呢？</p>
+<p>前面提到，命令必须依附于模块，不允许单独存在。所以在<code>KityMinder</code>里面，所有的命令都在<code>module</code>目录里面，包括它提供的或者我们自己定义的。<br><img src="http://static.zybuluo.com/Jerry-MEI/2epv3thkmzvnphked6aitvsg/image_1cn0mpu6d1f0e1ivqd981vqd5h39.png" alt="image_1cn0mpu6d1f0e1ivqd981vqd5h39.png-23.1kB"></p>
+<p>所以在讲<code>Command</code>的时候我们来结合<code>Module</code>一起来讲</p>
+<h3 id="Module"><a href="#Module" class="headerlink" title="Module"></a><code>Module</code></h3><p><code>Module</code>定义一个模块，表示控制脑图中一个功能的模块（布局、渲染、输入文字、图标叠加等）</p>
+<h4 id="模块定义"><a href="#模块定义" class="headerlink" title="模块定义"></a>模块定义</h4><p>那么我们如何去定义一个模块呢？在 <code>KityMinder</code>中有两种方式：</p>
+<ul>
+<li><p>直接注册<br>  通过<code>Module</code>类的<code>register</code>方法直接注册一个模块，然后配置它的一些属性，实现它的一些方法<br>  <img src="http://static.zybuluo.com/Jerry-MEI/8ul2i1t38irn4grvy90oaqz2/image_1cn10bnp71sd06sh1g6713c4ohe16.png" alt="image_1cn10bnp71sd06sh1g6713c4ohe16.png-44.9kB"></p>
+</li>
+<li><p>通过<code>function(){return{}}</code>的形式<br>  对于一些比较复杂的模块，我们可以在<code>function</code>里面做一些操作，再去返回它的配置项。这样代码比较结构化一些，便于阅读。<br>  <img src="http://static.zybuluo.com/Jerry-MEI/otvnqvda8if6uqbtmgrfm5x5/image_1cn10tnst1st2r1k1uaufkmb8e3g.png" alt="image_1cn10tnst1st2r1k1uaufkmb8e3g.png-50.3kB"></p>
+</li>
+</ul>
+<h4 id="模块配置"><a href="#模块配置" class="headerlink" title="模块配置"></a>模块配置</h4><p>在上面我们看到注册一个模块后，需要配置一些属性和实现一些方法，下面就来讲一下这些配置项是用来干嘛的。</p>
+<p>它的官方文档里介绍了<code>defaultOpitons、init、commands、events、destroy和reset</code>这几个配置项，但在翻阅它<code>Module</code>里的文件时，还发现有<code>renderers、contextmenu、commandShortcutKeys</code>这些。</p>
+<p>我们先看一下一个最基本的命令模块实现，比如我要执行一个下面的命令在节点上添加一个圆<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//添加一个半径为2的圆</span><br><span class="line">KM.execCommand(&apos;circle&apos;, 2);</span><br></pre></td></tr></table></figure></p>
+<p>模块的实现如下：（<strong>参考<code>demo5</code>和<code>simple-command</code></strong>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 实现一个最简单的命令模块</span><br><span class="line"> */</span><br><span class="line">Module.register(&apos;addCircleModule&apos;, &#123;</span><br><span class="line">    &apos;commands&apos;: &#123;</span><br><span class="line">        &apos;circle&apos;: kity.createClass(&apos;Circle&apos;, &#123;</span><br><span class="line">            base: Command,</span><br><span class="line">            execute: (minder, radius)=&gt; &#123;</span><br><span class="line">                //获取选中的节点</span><br><span class="line">                const node = minder.getSelectedNode();</span><br><span class="line">                if (!node) &#123;</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">                node.setData(&apos;radius&apos;, radius);</span><br><span class="line">                node.render();</span><br><span class="line">                minder.layout();</span><br><span class="line">            &#125;,</span><br><span class="line">            queryState: minder=&gt;minder.getSelectedNodes().length === 1 ? 0 : -1,</span><br><span class="line">            queryValue: (minder)=&gt; &#123;</span><br><span class="line">                const node = minder.getSelectedNode();</span><br><span class="line">                return node ? node.getData(&apos;radius&apos;) : null;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &apos;renderers&apos;: &#123;</span><br><span class="line">        left: kity.createClass(&apos;CircleRender&apos;, &#123;</span><br><span class="line">            base: Renderer,</span><br><span class="line">            create: function () &#123;</span><br><span class="line">                return new kity.Circle(0, 0, 0).fill(&apos;red&apos;);</span><br><span class="line">            &#125;,</span><br><span class="line">            shouldRender: function (node) &#123;</span><br><span class="line">                return node.getData(&apos;radius&apos;);</span><br><span class="line">            &#125;,</span><br><span class="line">            update: function (circle, node, box) &#123;</span><br><span class="line">                const radius = node.getData(&apos;radius&apos;);</span><br><span class="line">                circle.setRadius(radius);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这段代码实现了<code>commands</code>和<code>renderers</code>这两个方法</p>
+<h5 id="commands"><a href="#commands" class="headerlink" title="commands"></a>commands</h5><p><code>commands</code>就是我们前面说的命令了，所以通过代码我们就能理解命令必须依附于模块，不允许单独存在的意思了</p>
+<p><code>commands</code>里面可以包含多个命令，在上面代码中只有个<code>circle</code>命令。该命令的实现是创建一个<code>Command</code>类的子类。我们进入<code>Command</code>类，可以看到里面提供了一些方法，其中<code>execute</code>子类必须要实现。</p>
+<p>所以我们在这里要自己实现<code>execute</code>方法，该方法的第一个参数为<code>minder</code>类的对象，后面的参数为我们执行命令时传入的参数，在这里我们传入了半径。</p>
+<p>该方法就是命令的具体业务实现了，对于在节点上绘制一些东西，差不多都类似上面的写法。</p>
+<p>然后还有两个缺省方法<code>queryState</code>和<code>queryValue</code></p>
+<p><code>queryState</code>用于返回当前命令执行的状态</p>
+<ul>
+<li>-1：不可执行</li>
+<li>0：可执行</li>
+<li>1：已执行</li>
+</ul>
+<p><code>queryValue</code>用于返回当前命令的状态相关值，（例如：进度条的进度百分比值等）</p>
+<h5 id="renderers"><a href="#renderers" class="headerlink" title="renderers"></a>renderers</h5><p><code>renderers</code> 部分需要实现该命令要在节点上绘制的内容了。</p>
+<p>它里面的键<code>left</code>、<code>right</code>不知道干吗用的，目前还没发现用处</p>
+<p>它的值是一个<code>Renderer</code>类的子类。同样，我们进去<code>Renderer</code>类，可以发现有<code>create</code>、<code>draw</code>和<code>place</code>三个方法子类要自己实现</p>
+<p><code>draw</code>和<code>place</code>方法，我们可以用<code>update</code>方法来代替，因为它内部已经实现了这两个方法</p>
+<p>然后，大部分情况我们还要实现一个缺省方法<code>shouldRender</code>来判断是否要绘制</p>
+<p><code>create</code>方法就是图形的具体绘制了，通常我们会返回一个图形对象。然后在<code>update</code>方法里做一些更新操作，比如：拿到命令传递的参数为图形设置相应的属性。通常<code>update</code>方法最后还会返回一个新的<code>Box</code>，这个后面再做介绍。</p>
+<p>大部分情况下，上面这两个配置项就可以完成了。</p>
+<h5 id="defaultOpitons"><a href="#defaultOpitons" class="headerlink" title="defaultOpitons"></a>defaultOpitons</h5><p><code>defaultOpitons</code>可以配置模块可能使用到的一些默认值。比如在它<code>image.js</code>里面，默认配置图片的最大宽高：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;defaultOptions&apos;: &#123;</span><br><span class="line">    &apos;maxImageWidth&apos;: 200,</span><br><span class="line">    &apos;maxImageHeight&apos;: 200</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p>然后在<code>execute</code>方法中通过<code>minder.getOption(&#39;maxImageWidth&#39;)</code>和<code>minder.getOption(&#39;maxImageHeight&#39;)</code>就可以取到值，做一些操作</p>
+<h5 id="init"><a href="#init" class="headerlink" title="init"></a>init</h5><p><code>init</code>官方的解释是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Minder 实例化的时候会调用 init 方法，this 指向正在实例化的 Minder 对象</span><br><span class="line">// options 是 Minder 对象最终的配置（经过配置文件和用户设定改写）</span><br><span class="line">&quot;init&quot;: function( options )&#123;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p>这个方法里面的内容脑图实例化的时候就会去运行的，比如在<code>image-viewer.js</code>中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init: function () &#123;</span><br><span class="line">    this.viewer = new ImageViewer();</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p>在<code>init</code>里实例化一个<code>ImageViewer</code>对象，然后在<code>events</code>对应的事件里面去执行<code>this.viewer.open(shape.url);</code>方法就可以完成双击图片查看的功能了。</p>
+<blockquote>
+<p>但是这个最好不要多用，会影响脑图的加载。</p>
+</blockquote>
+<h5 id="destroy-和-reset"><a href="#destroy-和-reset" class="headerlink" title="destroy 和 reset"></a>destroy 和 reset</h5><p>这两个方法系统中没有地方用到，暂时不清楚<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// Minder 被卸载的时候会调用 destroy 方法，模块自行回收自己的资源（事件由 Minder 自动回收）</span><br><span class="line">// destroy 方法中的 this 指向 Minder 实例</span><br><span class="line">//By jerry.mei：该方法系统中没有使用到，暂时不知道用处</span><br><span class="line">&quot;destroy&quot;: function () &#123;</span><br><span class="line">&#125;,</span><br><span class="line">// Minder 被重设是会调用 reset 方法，模块自行</span><br><span class="line">// reset 方法中的 this 指向 Minder 实例</span><br><span class="line">// by jerry.mei：该方法系统中没有使用到，暂时不知道用处</span><br><span class="line">&quot;reset&quot;: function () &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="events"><a href="#events" class="headerlink" title="events"></a>events</h5><p>事件的绑定，可以为添加的图形绑定事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&apos;events&apos;: &#123;</span><br><span class="line">    &apos;click&apos;: function (e) &#123;</span><br><span class="line">        // console.log(e);</span><br><span class="line">    &#125;,</span><br><span class="line">    &apos;keydown keyup&apos;: function (e) &#123;</span><br><span class="line">        // console.log(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h5 id="commandShortcutKeys"><a href="#commandShortcutKeys" class="headerlink" title="commandShortcutKeys"></a>commandShortcutKeys</h5><p>快捷键功能，脑图里绑定快捷键十分方便，只需要将命令与对应的快捷键映射一下，就支持快捷键操作了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;commandShortcutKeys&apos;: &#123;</span><br><span class="line">    &apos;efforts&apos;: &apos;ctrl+alt+c&apos;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="contextmenu"><a href="#contextmenu" class="headerlink" title="contextmenu"></a>contextmenu</h5><p>暂时不清楚</p>
+<h3 id="MinderNode"><a href="#MinderNode" class="headerlink" title="MinderNode"></a><code>MinderNode</code></h3><h3 id="Minder"><a href="#Minder" class="headerlink" title="Minder"></a><code>Minder</code></h3><p>脑图使用类</p>
+<p>通过初始化 <code>Minder</code> 类，在<code>constructor</code>里面会创建脑图画布<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const KM = window.KM = new Minder();</span><br></pre></td></tr></table></figure></p>
+<p>将 <code>KM</code> 暴露为浏览器顶层对象，后续的大部分操作都可以使用 <code>KM</code> 来完成</p>
+<h2 id="Box-在-KityMinder-里的使用"><a href="#Box-在-KityMinder-里的使用" class="headerlink" title="Box 在 KityMinder 里的使用"></a>Box 在 KityMinder 里的使用</h2><blockquote>
+<p>参考<code>demo5</code>和<code>simple-command2</code></p>
+</blockquote>
+<h3 id="Box详解"><a href="#Box详解" class="headerlink" title="Box详解"></a>Box详解</h3><p>之前讲kity的时候着重讲了一下<code>Box</code>，因为在<code>KityMinder</code>里面，<code>Box</code>决定了节点里面元素的排列位置</p>
+<p>为了更方便地了解<code>Box</code>在<code>KityMinder</code>里的使用，我写了一个自定义的主题，将默认的padding什么的都设置为0</p>
+<p>我们切换到自定义主题，添加一个节点，发现就是这样</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/lfkv6mr1vxvwis9m42n7bx4d/image_1cn1cd73r1b011269cgu1ok51qt4h.png" alt="image_1cn1cd73r1b011269cgu1ok51qt4h.png-47.4kB"></p>
+<p>获取它的<code>Box</code>属性</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/ezx5h8aybyst9vq65eyuzan3/image_1cn1cg550t563oj4lfau61u1n5e.png" alt="image_1cn1cg550t563oj4lfau61u1n5e.png-13.3kB"></p>
+<p>x,y为左上角顶点坐标（0，-7），所以我们可以得出该节点坐标系原点的位置。放大看如下图：<br>所以其他的一些属性也很好解释</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/mkxokjv4kaien6h3v9nthh5b/image_1cn1ctvqh4ri1h07s6818ib18te6u.png" alt="image_1cn1ctvqh4ri1h07s6818ib18te6u.png-3.3kB"></p>
+<p>所以当我们往节点添加一个半径为5，坐标为（0,0）的圆时，这个圆在这个节点中是居中的吗？</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/6hqlbgr4bioce664c3uz1rx0/image_1cn1eqk1ivlg17j51k1v9ojdbl84.png" alt="image_1cn1eqk1ivlg17j51k1v9ojdbl84.png-7.5kB"></p>
+<p>我们将浏览器放大到到500%，可以看到圆心在坐标轴的原点，并不在节点的中心点</p>
+<p>同样，我们添加一个正方形，发现正方形的左上角顶点在坐标轴的原点。<br><img src="http://static.zybuluo.com/Jerry-MEI/j19l89bzo5scvfv06hme1otk/image_1cn1f43uqdhphlg1l7o1b3f1slm9k.png" alt="image_1cn1f43uqdhphlg1l7o1b3f1slm9k.png-5.8kB"></p>
+<p>所以，我们确定好坐标系后，就很容易去确定节点上元素的位置了，你只需要关心你绘制图形的顶点坐标位置就可以了。</p>
+<p>比如圆形，我们看它的参数解释：</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/6g2fagfwgelbzv1h41g7xrud/image_1cn36hb8v66fhce1femrs4dnh1c.png" alt="image_1cn36hb8v66fhce1femrs4dnh1c.png-19.9kB"></p>
+<p>所以，我们设置它的坐标（0,0），其实是圆心在坐标系（0,0）的位置</p>
+<p>再来看矩形：</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/5eg34w8r2ya2l6imexnp4gry/image_1cn36mqci1u2aldp1buc1btaren3o.png" alt="image_1cn36mqci1u2aldp1buc1btaren3o.png-44kB"></p>
+<p>我们设置它的坐标（0,0），其实是左上角顶点坐标在坐标系（0,0）的位置</p>
+<h3 id="利用-Box-确定元素位置"><a href="#利用-Box-确定元素位置" class="headerlink" title="利用 Box 确定元素位置"></a>利用 Box 确定元素位置</h3><h4 id="update-方法参数说明"><a href="#update-方法参数说明" class="headerlink" title="update 方法参数说明"></a>update 方法参数说明</h4><p>当我们在脑图上新增一个节点后，默认会插入一个<code>Text</code>，它会有默认的<code>padding</code>等样式属性。</p>
+<p>这些属性值是在<code>theme</code>目录里面配置的，比如我自定义了一个<code>custom.js</code>，里面会针对不同的节点去设置样式。</p>
+<p>然后我们回到之前讲的<code>Module</code>里面<code>renderers</code>需要在<code>update</code>方法里返回一个新的盒子</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/2rcjh4aljxvvvl9hq9k74879/image_1cn39cjdh13771ekc1nao19cg1g6418.png" alt="image_1cn39cjdh13771ekc1nao19cg1g6418.png-31.4kB"></p>
+<p>我们可以看到<code>update</code>方法里有三个参数，第一个参数为<code>create</code>方法返回的图形，第二个参数为选择的<code>node</code>节点，第三个参数为<code>box</code></p>
+<p>我们可利用<code>node</code>的<code>getStyle()</code>方法获取一些样式值，比如<code>space</code>属性，可以获取每个元素之间的间距，<code>padding</code>可以获取节点的内边距</p>
+<p>我们打印一个<code>box</code>的值，因为节点默认添加了<code>Text</code>，所以<code>box</code>返回的是该<code>Text</code>的<code>box</code>值</p>
+<h4 id="设置图形的位置"><a href="#设置图形的位置" class="headerlink" title="设置图形的位置"></a>设置图形的位置</h4><p>在<code>update</code>方法里面，我们可以用两种或者更多的方式来设置图形的位置：</p>
+<ul>
+<li>改变图形的坐标</li>
+<li>利用<code>kityminder</code>坐标系的<code>setTranslate</code>方法</li>
+</ul>
+<p>这些都不是重要的，重要的是我们要获取我们需要摆放图形的位置</p>
+<p>比如：我要在文字的右边添加一个圆形，如下图：</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/65ufa8jyq235swom3elvetqt/image_1cn3b5ep61amf12dv1nrt18g8kqp35.png" alt="image_1cn3b5ep61amf12dv1nrt18g8kqp35.png-26.9kB"></p>
+<p>我们可以获取文字 Box 的<code>right</code>值，即文字的最右边<code>x</code>轴坐标，加上<code>space-right</code>值即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const x = box.right + node.getStyle(&apos;space-right&apos;);</span><br><span class="line">//利用改变坐标设置图形的位置</span><br><span class="line">circle.setCenterX(x);</span><br><span class="line">//利用setTranslate方法设置图形的位置</span><br><span class="line">circle.setTranslate(x, 0);</span><br></pre></td></tr></table></figure></p>
+<h4 id="返回新的盒子"><a href="#返回新的盒子" class="headerlink" title="返回新的盒子"></a>返回新的盒子</h4><p>在上面的操作之后，我们发现节点中新增了一个圆，并在文字的右边，好像符合了我们的预期，但其实并不是这样。</p>
+<p>因为我们给 <code>node</code> 节点添加了默认的<code>padding</code>属性，看起来好像文字和圆都在节点里面。但当我们去掉 <code>node</code>默认的<code>padding</code>值，问题就出现了。</p>
+<p>我们设置一下自定义主题，看到的结果如下：</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/pcail9ramvydlfv9c079dc9y/image_1cn3bts3tlne1dqf1f29lhp75p3i.png" alt="image_1cn3bts3tlne1dqf1f29lhp75p3i.png-23.1kB"></p>
+<p>因为我们的盒子还是之前 text 的盒子，添加了圆之后我们需要返回新的盒子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//返回新的盒子</span><br><span class="line">return new kity.Box(&#123;</span><br><span class="line">    x: x,</span><br><span class="line">    y: box.y,</span><br><span class="line">    width: circle.rx,</span><br><span class="line">    height: circle.ry</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>x,y 即圆心的坐标，宽高为圆的 x,y 半径</p>
+<p>我们去掉样式后看到的效果就是这样的：</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/mkv3a8f3xxl93t8haqi0zip6/image_1cn3ilfp31nbi1fq21fdlv6hgjc3v.png" alt="image_1cn3ilfp31nbi1fq21fdlv6hgjc3v.png-20.8kB"></p>
+<h2 id="kityminder-core-文件详解"><a href="#kityminder-core-文件详解" class="headerlink" title="kityminder-core 文件详解"></a>kityminder-core 文件详解</h2><p>我们可以看到<code>kityminder-core</code>跟<code>kity</code>的文件组织方式类似。</p>
+<p><code>kityminder.js</code>用于导出所有的类和模块，<code>expose-kityminder.js</code>用于将<code>kityminder</code>变量提升为<code>windows</code>对象</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/kibqiqhbcrzvv9ff2ui507qb/image_1cn5ukkrp1egtep4t5behdrbf9.png" alt="image_1cn5ukkrp1egtep4t5behdrbf9.png-10.4kB"></p>
+<p>因为我们需要去扩展<code>kityminder-core</code>的类库，所以将<code>kityminder-core</code>作为项目的一个模块，去掉了<code>expose-kityminder.js</code>，使用的时候直接引入<code>kityminder.js</code>即可</p>
+<h3 id="core部分"><a href="#core部分" class="headerlink" title="core部分"></a>core部分</h3><p><strong><code>utils</code></strong></p>
+<p>工具文件，提供了一些常用的方法</p>
+<p><strong><code>minder</code></strong></p>
+<p>比较重要的一个文件，使用了 initHooks[] 机制, 对每个注册的 init-hook 用 this 产生调用.</p>
+<p>似乎还有 event 机制, 在 ctor 最后使用 fire() 触发 ‘finishInitHook’ 事件.</p>
+<p>脑图的大部分文件都是通过拓展<code>Minder</code>类，来完成相应的业务的。</p>
+<p>注释里面说，是暴露在 window 上的唯一变量</p>
+<p><strong><code>command</code></strong></p>
+<p>通过 <code>execCommand</code> 方法来执行一些命令的操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">km.execCommand(&apos;HyperLink&apos;, &apos;https://www.baidu.com&apos;, &apos;百度&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>按照架构文档说明, abstract Command 表示一条在 KityMinder 上执行的命令.<br>以class的方式定义，命令必须依附于模块，不允许单独存在。</p>
+<p>这个文件做了两件事情：一个是实现了一个<code>Command</code>类，还有就是拓展了<code>Minder</code>类。接下来的大部分文件核心内容都是在做这两件事。</p>
+<p>先看一下 <code>Command</code> 类实现的部分：</p>
+<p><code>execute</code> 方法，执行一条命令。类似于一个抽象方法，子类必须实现</p>
+<p>然后就是一些 set/get 方法了</p>
+<p>再来看一下拓展<code>Minder</code>类的部分，实现了如下的方法：</p>
+<ul>
+<li>_getCommand<br>  获取命令的相关信息，输出一下<code>KM._getCommand(&#39;HyperLink&#39;)</code><br>  <img src="http://static.zybuluo.com/Jerry-MEI/msu0ek045nue71l6g3qgwa5o/QQ%E6%88%AA%E5%9B%BE20180903151541.png" alt="QQ截图20180903151541.png-11.3kB"></li>
+<li>_queryCommand</li>
+<li>queryCommandState<br>  获取当前命令的装填</li>
+<li>queryCommandValue</li>
+<li>execCommand</li>
+</ul>
+<p><strong><code>node</code></strong></p>
+<p>创建脑图的一个节点</p>
+<p><strong><code>event</code></strong></p>
+<p>表示一个脑图中发生的事件</p>
+<p>这里也回答了前面的问题, 即 Minder 的 event 从哪里来的问题.</p>
+<h2 id="脑图加载的执行顺序"><a href="#脑图加载的执行顺序" class="headerlink" title="脑图加载的执行顺序"></a>脑图加载的执行顺序</h2><p>在脑图的 demo 中，我们先是在 HTML 中写了一段 script，内容就是脑图的 json 对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script id=&quot;minder-view&quot; type=&quot;application/kityminder&quot; minder-data-type=&quot;json&quot;&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;root&quot;: &#123;</span><br><span class="line">            &quot;data&quot;: &#123;</span><br><span class="line">                &quot;text&quot;: &quot;百度产品&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;children&quot;: [</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;新闻&quot; &#125;,&quot;children&quot;:[</span><br><span class="line">                    &#123;&quot;data&quot;:&#123;&quot;text&quot;:&quot;财经板块&quot;&#125;&#125;,</span><br><span class="line">                    &#123;&quot;data&quot;:&#123;&quot;text&quot;:&quot;文娱板块&quot;&#125;&#125;</span><br><span class="line">                ] &#125;,</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;地方都是地王大厦\n第三方的\n第三方&quot; &#125;&#125;,</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;贴吧&quot;, &quot;priority&quot;: 2 &#125; &#125;,</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;知道&quot;, &quot;priority&quot;: 2 &#125; &#125;,</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;音乐&quot;, &quot;priority&quot;: 3 &#125; &#125;,</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;图片&quot;, &quot;priority&quot;: 3 &#125; &#125;,</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;视频&quot;, &quot;priority&quot;: 3 &#125; &#125;,</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;地图&quot;, &quot;priority&quot;: 3 &#125; &#125;,</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;百科&quot; &#125;&#125;,</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;百度脑涂&quot; &#125; &#125;,</span><br><span class="line">                &#123; &quot;data&quot;: &#123; &quot;text&quot;: &quot;更多&quot;, &quot;hyperlink&quot;: &quot;http://www.baidu.com/more&quot; &#125; &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>然后执行<code>KM.setup(&#39;#minder-view&#39;)</code> 就可以将脑图加载出来了。那么，脑图的整个加载流程是怎样的呢？</p>
+<p>首先，<code>setup</code> 方法通过 HTML DOM 操作，根据传进来的参数获取 DOM 对象以及 DOM 对象的属性和内容。</p>
+<p>获取到了<code>protocol</code>后，判断是否在<code>protocols</code>中，如果在就依次执行<code>renderTo</code>和<code>importData</code>方法，渲染节点，导入数据。</p>
+<p>我们在调试的时候，可以发现<code>protocols</code>对象的值如下：<br><img src="http://static.zybuluo.com/Jerry-MEI/gzcivo8azrppi8aj308570t4/image_1cn3p75i21s3b1mph7d01dod11199.png" alt="image_1cn3p75i21s3b1mph7d01dod11199.png-35.8kB"></p>
+<p>它默认支持了这些格式的数据。那么<code>protocols</code>是在哪里赋的值呢？</p>
+<p>我们可以发现在<code>data.js</code>中一开始就定义了<code>protocols</code>对象，然后实现并导出了两个方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var protocols = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">function registerProtocol(name, protocol) &#123;</span><br><span class="line">    protocols[name] = protocol;</span><br><span class="line"></span><br><span class="line">    for (var pname in protocols) &#123;</span><br><span class="line">        if (protocols.hasOwnProperty(pname)) &#123;</span><br><span class="line">            protocols[pname] = protocols[pname];</span><br><span class="line">            protocols[pname].name = pname;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getRegisterProtocol(name) &#123;</span><br><span class="line">    return name === undefined ? protocols : (protocols[name] || null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.registerProtocol = registerProtocol;</span><br><span class="line">exports.getRegisterProtocol = getRegisterProtocol;</span><br></pre></td></tr></table></figure></p>
+<p><code>registerProtocol</code>方法是关键，它其实就是在给<code>protocols</code>添加对象。那么，我们只需要知道哪里调用了<code>registerProtocol</code>方法，就可以知道<code>protocols</code>的值是怎么产生的了。</p>
+<p>搜索发现，在<code>protocol</code>目录下的这些文件都是在给<code>protocols</code>添加对象的。</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/ebj2oluh20l7bg7ommqmz11h/image_1cn3psgjpa7h10r57l911m4125626.png" alt="image_1cn3psgjpa7h10r57l911m4125626.png-5.7kB"></p>
+<p>我们也可以参照它的实现去扩展自己的一些数据格式。</p>
+<p>因为我们在 <code>kityminder.js</code>中引入了这些模块依赖，所以这些方法一开始就都会执行的。<code>protocols</code>的内容就是这样来的。</p>
+<p>接下来，我们看<code>renderTo</code>方法的实现。</p>
+<p><code>renderTo</code>方法是在<code>paper.js</code>里的，在<code>kity</code>里我们知道<code>paper</code>是画布，一切的显示最终都是要在画布上呈现。</p>
+<p>这个文件一开始使用了<code>initHook</code>的机制去执行了<code>_initPaper</code>方法，做一些 paper 初始化的操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Minder.registerInitHook(function () &#123;</span><br><span class="line">    this._initPaper();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在<code>renderTo</code>方法的内部，其实就是利用 kity paper 的 <code>renderTo</code>方法将 paper 渲染到真实的 DOM 节点上了。；然后<code>_bindEvents</code>方法为 paper 绑定了一些事件；最后<code>this.fire(&#39;paperrender&#39;)</code>触发了一个<code>paperrender</code>事件。</p>
+<p>关于<code>fire</code>，前面 <code>Minder</code>里有介绍到。它仅仅是触发了一个事件，就像你点击一个按钮触发了click事件，但事件的回调我们需要在具体的地方去实现。比如：在它的<code>view.js</code>里</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/s16wdufvk0aux3qznycdzy8s/image_1cn3svicm4lb2ehongr21p9589.png" alt="image_1cn3svicm4lb2ehongr21p9589.png-17.3kB"></p>
+<p>到这一步，DOM 中已经插入了 id为<code>minder-view</code>的 div，里面 svg 渲染了一个根节点，在画布的最左侧</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/2zwshpxj568b2jiq4gr8szbn/image_1cn3tauodnqu1iopur81bkf10uje1.png" alt="image_1cn3tauodnqu1iopur81bkf10uje1.png-19.7kB"></p>
+<p>改一下它的位移，发现它是这样的：</p>
+<p><img src="http://static.zybuluo.com/Jerry-MEI/a37ylzty9fvckcmldh3s7kl5/image_1cn3tf5jml8i1941kq3hgcu0gih.png" alt="image_1cn3tf5jml8i1941kq3hgcu0gih.png-1.4kB"></p>
+<p><code>importData</code>方法是根据传入的脑图数据来开始绘制脑图了。我么看<code>importData</code>方法的实现。</p>
+<p>这里面首先是对协议进行检查，然后这个导入前抛事件<code>this._fire(new MinderEvent(&#39;beforeimport&#39;, params))</code>不知道干吗的，系统中也没用到，文档也没提到。</p>
+<p><code>return</code> 这部分比较重要，通过 js 的 <code>Promise</code>来实现一个异步操作，异步操作里面执行<code>importJson</code>方法，并返回 <code>json</code> 数据</p>
+<p>所以最关键的部分就是<code>importJson</code>了，这里面完成绘制的操作。</p>
+<p>我们看<code>importJson</code>方法：</p>
+<p>一开始也是使用<code>_fire</code>触发一个前置事件，然后删除当前的所有节点。</p>
+<p><code>importNode</code>方法是绘制的核心，将 json 对象绘制成对应的脑图节点</p>
+<p>这里面主要是循环去做<code>setData</code>和<code>createNode</code>，<code>setData</code>将节点的数据传入进去，<code>createNode</code>就是创建节点了。</p>
+<p>然后节点上图形的绘制就是<code>module</code>里的那些模块利用<code>renderers</code>实现的。</p>
+<p>节点的连线是<code>connect</code>里提供的一些连线函数来实现的</p>
+<p>这些都做完了后，通过下面的代码来设置主题和布局<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.setTemplate(json.template || &apos;default&apos;);</span><br><span class="line">this.setTheme(json.theme || null);</span><br><span class="line">this.refresh();</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jerrymei.cn/2018/10/29/百度脑图（kityminder-core）/" data-id="cjntvi6rk0000kkv76j409r6i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/29/百度脑图（kityminder-core）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/26/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Jerry Mei<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
